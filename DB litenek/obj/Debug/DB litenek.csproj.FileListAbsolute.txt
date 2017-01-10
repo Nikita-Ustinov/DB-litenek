@@ -6,3 +6,11 @@ C:\Users\Comp\Documents\SharpDevelop Projects\DB litenek\DB litenek\bin\Debug\DB
 C:\Users\Comp\Documents\SharpDevelop Projects\DB litenek\DB litenek\bin\Debug\DB litenek.pdb
 C:\Users\Comp\Documents\SharpDevelop Projects\DB litenek\DB litenek\obj\Debug\DB litenek.exe
 C:\Users\Comp\Documents\SharpDevelop Projects\DB litenek\DB litenek\obj\Debug\DB litenek.pdb
+C:\Users\Nkita\Documents\GitHub\DB-litenek\DB litenek\bin\Debug\DB litenek.exe.config
+C:\Users\Nkita\Documents\GitHub\DB-litenek\DB litenek\bin\Debug\DB litenek.exe
+C:\Users\Nkita\Documents\GitHub\DB-litenek\DB litenek\bin\Debug\DB litenek.pdb
+C:\Users\Nkita\Documents\GitHub\DB-litenek\DB litenek\obj\Debug\DB litenek.csprojResolveAssemblyReference.cache
+C:\Users\Nkita\Documents\GitHub\DB-litenek\DB litenek\obj\Debug\DB_litenek.MainForm.resources
+C:\Users\Nkita\Documents\GitHub\DB-litenek\DB litenek\obj\Debug\DB litenek.csproj.GenerateResource.Cache
+C:\Users\Nkita\Documents\GitHub\DB-litenek\DB litenek\obj\Debug\DB litenek.exe
+C:\Users\Nkita\Documents\GitHub\DB-litenek\DB litenek\obj\Debug\DB litenek.pdb
