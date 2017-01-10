@@ -68,6 +68,20 @@ namespace DB_litenek
 			return vypis;
 		}
 		
+		public String  hledatLitenky(String odkud, DateTime date ) {
+			LinkedListNode<Letenky> templ = SeznamLetemek.First;
+			String vypis= null;
+			if(templ!=null) {
+				while(templ!=null) {
+					if((templ.Value.Odkud == odkud) && (templ.Value.Date == date)) {
+						vypis += "Cas vyletu: "+templ.Value.Cas +"  Spolecnost: " + this.Nazev +"  cislo Vyletu: "+templ.Value.CisloLetu +" Leti do: "+templ.Value.Kam+ "&";
+					}
+					templ = templ.Next;
+				}
+			}
+			return vypis;
+		}
+		
 		public void Smaz(String cisloLetu) {
 			LinkedListNode<Letenky> templ = SeznamLetemek.First;
 			while(templ!=null) {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
@@ -58,6 +57,7 @@ namespace DB_litenek
 				SeznamLSploecnost.AddLast(new Spolecnost(spolecnost,cisloLetu , odkud, kam, cas, PocetVolnychMist, date));
 			}
 			serializace();
+			MessageBox.Show("Letenka pridana");
 		}
 		
 		bool iObsahuje(String nazev) {				//vraci true jestli v seznammu uz je dana spolcnost
@@ -79,7 +79,13 @@ namespace DB_litenek
 			try {
 			listBox1.Items.Clear();
 			DateTime date = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, dateTimePicker2.Value.Day);
-			hledatLitenky(textBoxOdkud.Text, textBoxKam.Text, date);
+			if (!string.IsNullOrEmpty(textBoxKam.Text)) {
+				hledatLitenky(textBoxOdkud.Text, textBoxKam.Text, date);
+			}
+			else {
+				hledatLitenky(textBoxOdkud.Text,  date);
+			}
+			
 			}
 			catch(Exception ee) {
 				MessageBox.Show("Doslo k chybe");
@@ -88,23 +94,44 @@ namespace DB_litenek
 		
 		void hledatLitenky(String odkud, String kam, DateTime date ) {	//hleda letenky a zapisuje jich do listBox1
 			LinkedListNode<Spolecnost> templ = SeznamLSploecnost.First;
+			int count=0;
 			String[] vystup;
-			if(templ != null) {
-				while(templ != null) {
-					try {
-						vystup = new string[templ.Value.hledatLitenky(odkud, kam, date).Split('&').Length];
-						vystup = templ.Value.hledatLitenky(odkud, kam, date).Split('&');
-						for(int i=0; i<vystup.Length-1; i++) {
-							listBox1.Items.Add(vystup[i]);
-						}
+			while(templ != null) {
+				try {
+					vystup = new string[templ.Value.hledatLitenky(odkud, kam, date).Split('&').Length];
+					vystup = templ.Value.hledatLitenky(odkud, kam, date).Split('&');
+					for(int i=0; i<vystup.Length-1; i++) {
+						listBox1.Items.Add(vystup[i]);
+						count++;
 					}
-					catch (Exception e) {}
-					templ = templ.Next;
 				}
-				
+				catch (Exception e) {}
+				templ = templ.Next;
 			}
-			else 
-				MessageBox.Show("Nemate pripojenou datobazi");
+			if(count==0) {
+				MessageBox.Show("Nenaleznena zadna letenka");
+			}
+		}
+		
+		void hledatLitenky(String odkud, DateTime date ) {	//hleda letenky a zapisuje jich do listBox1
+			LinkedListNode<Spolecnost> templ = SeznamLSploecnost.First;
+			int count=0;
+			String[] vystup;
+			while(templ != null) {
+				try {
+					vystup = new string[templ.Value.hledatLitenky(odkud, date).Split('&').Length];
+					vystup = templ.Value.hledatLitenky(odkud, date).Split('&');
+					for(int i=0; i<vystup.Length-1; i++) {
+						listBox1.Items.Add(vystup[i]);
+						count++;
+					}
+				}
+				catch (Exception e) {}
+				templ = templ.Next;
+			}
+			if(count==0) {
+				MessageBox.Show("Nenaleznena zadna letenka");
+			}
 		}
 		
 		void serializace() {
@@ -129,7 +156,7 @@ namespace DB_litenek
 		void Button4Click(object sender, EventArgs e)	
 		{
 			if(listBox1.SelectedItem!=null) {
-				String[] zaznam = new string[10];
+				String[] zaznam = new string[13];
 				zaznam = listBox1.SelectedItem.ToString().Split(' ');
 				LinkedListNode<Spolecnost> templ = SeznamLSploecnost.First;
 				while(templ!=null) {
@@ -141,8 +168,11 @@ namespace DB_litenek
 			}
 			listBox1.Items.Clear();
 			DateTime date = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, dateTimePicker2.Value.Day);
-			hledatLitenky(textBoxOdkud.Text, textBoxKam.Text, date);
-			serializace();
+			if(!string.IsNullOrEmpty(textBoxKam.Text)) {
+			   	hledatLitenky(textBoxOdkud.Text, textBoxKam.Text, date);
+			}
+		   hledatLitenky(textBoxOdkud.Text, date);
+		   serializace();
 		}
 		
 	}
