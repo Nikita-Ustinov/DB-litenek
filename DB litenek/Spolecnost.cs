@@ -6,7 +6,7 @@ namespace DB_litenek
 	/// Description of Spolecnost.
 	/// </summary>
 	/// 
-	
+	[Serializable]
 	struct Letenky {
 			
 		public  Letenky(string cisloLetu, string odkud, string kam, string cas, int pocetVolnychMist, DateTime date) {
@@ -19,17 +19,17 @@ namespace DB_litenek
 		}
 				
 		public	String CisloLetu;
-		public	int PocetVolnyhMist;	
+		public  int PocetVolnyhMist;	
 		public String Cas;
 		public String Odkud;
 		public String Kam;
 		public DateTime Date;
 	}
 	
+	[Serializable]
 	public class Spolecnost
 	{
-		 LinkedList<Letenky> SeznamLetemek = new LinkedList<Letenky>();
-		
+		LinkedList<Letenky> SeznamLetemek = new LinkedList<Letenky>();
 		
 		
 		public String Nazev;
@@ -41,39 +41,41 @@ namespace DB_litenek
 			newLitenka(cisloLetu , odkud, kam, cas, PocetVolnychMist, date);
 		}
 		
-		
-		
-		public void newLitenka(string cisloLetu, string odkud, string kam, string cas, int pocetVolnychMist, DateTime date)
+		public bool newLitenka(string cisloLetu, string odkud, string kam, string cas, int pocetVolnychMist, DateTime date)
 		{
 			LinkedListNode<Letenky> temp = SeznamLetemek.First;
-			bool uzTam = false;
-//			while(temp.Next!=null) {
-//				if(temp.Value.CisloLetu == cisloLetu) {
-//					temp.Value.PocetVolnyhMist = pocetVolnychMist;
-//					uzTam = true;
-//				}
-//				temp = temp.Next;
-//			}
-
-
-			if(!uzTam) {
-				SeznamLetemek.AddLast(new Letenky(cisloLetu, odkud,kam,cas,pocetVolnychMist,date));
+			while(temp!=null) {
+				if(temp.Value.CisloLetu == cisloLetu ) {
+					return false;
+				}
+				temp = temp.Next;
 			}
-			
+			SeznamLetemek.AddLast(new Letenky(cisloLetu, odkud,kam,cas,pocetVolnychMist,date));
+			return true;
 		}
 		
 		public String  hledatLitenky(String odkud, String kam, DateTime date ) {
 			LinkedListNode<Letenky> templ = SeznamLetemek.First;
 			String vypis= null;
 			if(templ!=null) {
-				while(templ.Next!=null) {
-					if((templ.Value.Odkud == odkud) || (templ.Value.Kam == kam) || (templ.Value.Date == date)) {
-						vypis += "Cas vyletu: "+templ.Value.Cas +"  Spolecnost: " + this.Nazev +"  cislo Vyletu: "+templ.Value.CisloLetu + "\r\n";
+				while(templ!=null) {
+					if((templ.Value.Odkud == odkud) && (templ.Value.Kam == kam) && (templ.Value.Date == date)) {
+						vypis += "Cas vyletu: "+templ.Value.Cas +"  Spolecnost: " + this.Nazev +"  cislo Vyletu: "+templ.Value.CisloLetu + "&";
 					}
 					templ = templ.Next;
 				}
 			}
 			return vypis;
+		}
+		
+		public void Smaz(String cisloLetu) {
+			LinkedListNode<Letenky> templ = SeznamLetemek.First;
+			while(templ!=null) {
+				if(templ.Value.CisloLetu == cisloLetu) {
+					SeznamLetemek.Remove(templ);
+				}
+				templ = templ.Next;
+			}
 		}
 	}
 }

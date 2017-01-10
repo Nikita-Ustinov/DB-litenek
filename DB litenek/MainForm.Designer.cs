@@ -54,6 +54,8 @@ namespace DB_litenek
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.label8 = new System.Windows.Forms.Label();
+			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
 			this.button3 = new System.Windows.Forms.Button();
 			this.textBox5 = new System.Windows.Forms.TextBox();
@@ -67,13 +69,14 @@ namespace DB_litenek
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
 			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.buttonHledat = new System.Windows.Forms.Button();
 			this.textBoxKam = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.textBoxOdkud = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.button4 = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
@@ -100,6 +103,8 @@ namespace DB_litenek
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.label8);
+			this.panel1.Controls.Add(this.textBox4);
 			this.panel1.Controls.Add(this.maskedTextBox1);
 			this.panel1.Controls.Add(this.button3);
 			this.panel1.Controls.Add(this.textBox5);
@@ -112,11 +117,27 @@ namespace DB_litenek
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.textBox1);
 			this.panel1.Controls.Add(this.label1);
-			this.panel1.Location = new System.Drawing.Point(642, 159);
+			this.panel1.Location = new System.Drawing.Point(33, 0);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(577, 206);
 			this.panel1.TabIndex = 2;
 			this.panel1.Visible = false;
+			// 
+			// label8
+			// 
+			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label8.Location = new System.Drawing.Point(316, 41);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(84, 23);
+			this.label8.TabIndex = 14;
+			this.label8.Text = "Cislo letu: ";
+			// 
+			// textBox4
+			// 
+			this.textBox4.Location = new System.Drawing.Point(413, 42);
+			this.textBox4.Name = "textBox4";
+			this.textBox4.Size = new System.Drawing.Size(103, 20);
+			this.textBox4.TabIndex = 13;
 			// 
 			// maskedTextBox1
 			// 
@@ -226,11 +247,18 @@ namespace DB_litenek
 			this.panel2.Controls.Add(this.label7);
 			this.panel2.Controls.Add(this.textBoxOdkud);
 			this.panel2.Controls.Add(this.label6);
-			this.panel2.Location = new System.Drawing.Point(32, 15);
+			this.panel2.Location = new System.Drawing.Point(43, 0);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(525, 350);
 			this.panel2.TabIndex = 3;
 			this.panel2.Visible = false;
+			// 
+			// dateTimePicker2
+			// 
+			this.dateTimePicker2.Location = new System.Drawing.Point(260, 19);
+			this.dateTimePicker2.Name = "dateTimePicker2";
+			this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+			this.dateTimePicker2.TabIndex = 7;
 			// 
 			// listBox1
 			// 
@@ -239,7 +267,6 @@ namespace DB_litenek
 			this.listBox1.Name = "listBox1";
 			this.listBox1.Size = new System.Drawing.Size(473, 186);
 			this.listBox1.TabIndex = 6;
-			this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1SelectedIndexChanged);
 			// 
 			// buttonHledat
 			// 
@@ -281,19 +308,24 @@ namespace DB_litenek
 			this.label6.TabIndex = 1;
 			this.label6.Text = "Odkud";
 			// 
-			// dateTimePicker2
+			// button4
 			// 
-			this.dateTimePicker2.Location = new System.Drawing.Point(260, 19);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker2.TabIndex = 7;
+			this.button4.Location = new System.Drawing.Point(642, 125);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(97, 55);
+			this.button4.TabIndex = 4;
+			this.button4.Text = "Odebrat";
+			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Visible = false;
+			this.button4.Click += new System.EventHandler(this.Button4Click);
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-			this.ClientSize = new System.Drawing.Size(739, 396);
+			this.ClientSize = new System.Drawing.Size(757, 350);
+			this.Controls.Add(this.button4);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.button2);
@@ -305,6 +337,7 @@ namespace DB_litenek
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
 			this.ResumeLayout(false);
+
 		}
 		private System.Windows.Forms.DateTimePicker dateTimePicker2;
 		private System.Windows.Forms.Label label6;
@@ -314,17 +347,17 @@ namespace DB_litenek
 		private System.Windows.Forms.Button buttonHledat;
 		public System.Windows.Forms.ListBox listBox1;
 		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.TextBox textBox4;
+		private System.Windows.Forms.Button button4;
 		
-		void Button1Click(object sender, System.EventArgs e)
+		void Button1Click(object sender, System.EventArgs e)	//zobrazuje panel pro hledani letenek
 		{
+			panel1.Visible =false;
 			panel2.Visible = true;
-			button1.Visible = false;
-			button2.Visible = false;			
+			button4.Visible = true;		
 		}
 		
-		void ListBox1SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			
-		}
+		
 	}
 }
