@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace DB_litenek
+namespace DB_letenek
 {
 	/// <summary>
 	/// Description of Spolecnost.

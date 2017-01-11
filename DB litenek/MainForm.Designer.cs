@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Comp
- * Date: 09.01.2017
- * Time: 22:12
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-namespace DB_litenek
+﻿namespace DB_letenek
 {
 	partial class MainForm
 	{
